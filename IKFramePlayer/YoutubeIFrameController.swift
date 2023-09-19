@@ -1,4 +1,6 @@
-//
+// TO DO : Youtube linkinin sonundaki kisim ID olarka geciyor.
+// TO DO : Anasayfada bir tane textfield yap ve arama ile video getir. Istege gore farkli sekilde yapabilirsin.
+// TO DO : Video linkini nasil getirecegini bul.
 //  YoutubeIFrameController.swift
 //  IKFramePlayer
 //
@@ -14,7 +16,6 @@ class YoutubeIFrameController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.playerView.load(withVideoId: "M7lc1UVf-VE")
-        
+        self.playerView.load(withVideoId: "jBryHOdyx_k")
     }
 }
