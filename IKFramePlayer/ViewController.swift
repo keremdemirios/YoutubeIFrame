@@ -29,7 +29,11 @@ class ViewController: UIViewController {
     
     private func configure(){
         configureUI()
-        self.playerView.load(withVideoId: "jBryHOdyx_k")
+        getYoutubeView()
+    }
+    
+    private func getYoutubeView(){
+        self.playerView.load(withVideoId: "https://www.youtube.com/watch?v=WxR3CMyMl1c".getYoutubeId() ?? "Empty")
     }
     
     private func configureUI(){
