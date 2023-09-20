@@ -9,22 +9,20 @@
 /* Begin PBXBuildFile section */
 		410B35A32AB9FEF000F9E7B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B35A22AB9FEF000F9E7B5 /* AppDelegate.swift */; };
 		410B35A52AB9FEF000F9E7B5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B35A42AB9FEF000F9E7B5 /* SceneDelegate.swift */; };
-		410B35AA2AB9FEF000F9E7B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410B35A82AB9FEF000F9E7B5 /* Main.storyboard */; };
 		410B35AC2AB9FEF200F9E7B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 410B35AB2AB9FEF200F9E7B5 /* Assets.xcassets */; };
 		410B35AF2AB9FEF200F9E7B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 410B35AD2AB9FEF200F9E7B5 /* LaunchScreen.storyboard */; };
 		410B35B82ABA009800F9E7B5 /* YouTubeiOSPlayerHelper in Frameworks */ = {isa = PBXBuildFile; productRef = 410B35B72ABA009800F9E7B5 /* YouTubeiOSPlayerHelper */; };
-		410B35BA2ABA058000F9E7B5 /* YoutubeIFrameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B35B92ABA058000F9E7B5 /* YoutubeIFrameController.swift */; };
+		410B35BA2ABA058000F9E7B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B35B92ABA058000F9E7B5 /* ViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		410B359F2AB9FEF000F9E7B5 /* IKFramePlayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IKFramePlayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		410B35A22AB9FEF000F9E7B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		410B35A42AB9FEF000F9E7B5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		410B35A92AB9FEF000F9E7B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		410B35AB2AB9FEF200F9E7B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		410B35AE2AB9FEF200F9E7B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		410B35B02AB9FEF200F9E7B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		410B35B92ABA058000F9E7B5 /* YoutubeIFrameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeIFrameController.swift; sourceTree = "<group>"; };
+		410B35B92ABA058000F9E7B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,11 +58,10 @@
 			children = (
 				410B35A22AB9FEF000F9E7B5 /* AppDelegate.swift */,
 				410B35A42AB9FEF000F9E7B5 /* SceneDelegate.swift */,
-				410B35A82AB9FEF000F9E7B5 /* Main.storyboard */,
 				410B35AB2AB9FEF200F9E7B5 /* Assets.xcassets */,
 				410B35AD2AB9FEF200F9E7B5 /* LaunchScreen.storyboard */,
 				410B35B02AB9FEF200F9E7B5 /* Info.plist */,
-				410B35B92ABA058000F9E7B5 /* YoutubeIFrameController.swift */,
+				410B35B92ABA058000F9E7B5 /* ViewController.swift */,
 			);
 			path = IKFramePlayer;
 			sourceTree = "<group>";
@@ -135,7 +132,6 @@
 			files = (
 				410B35AF2AB9FEF200F9E7B5 /* LaunchScreen.storyboard in Resources */,
 				410B35AC2AB9FEF200F9E7B5 /* Assets.xcassets in Resources */,
-				410B35AA2AB9FEF000F9E7B5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,7 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				410B35BA2ABA058000F9E7B5 /* YoutubeIFrameController.swift in Sources */,
+				410B35BA2ABA058000F9E7B5 /* ViewController.swift in Sources */,
 				410B35A32AB9FEF000F9E7B5 /* AppDelegate.swift in Sources */,
 				410B35A52AB9FEF000F9E7B5 /* SceneDelegate.swift in Sources */,
 			);
@@ -155,14 +151,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		410B35A82AB9FEF000F9E7B5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				410B35A92AB9FEF000F9E7B5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		410B35AD2AB9FEF200F9E7B5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -295,14 +283,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H6A8FF2GG8;
+				DEVELOPMENT_TEAM = 3797ZG2659;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IKFramePlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,14 +311,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = H6A8FF2GG8;
+				DEVELOPMENT_TEAM = 3797ZG2659;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = IKFramePlayer/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
