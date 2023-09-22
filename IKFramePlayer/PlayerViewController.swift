@@ -1,4 +1,3 @@
-// TO DO : Youtube linkinin sonundaki kisim ID olarka geciyor.
 // TO DO : Anasayfada bir tane textfield yap ve arama ile video getir. Istege gore farkli sekilde yapabilirsin.
 // TO DO : Video linkini nasil getirecegini bul.
 //  YoutubeIFrameController.swift
@@ -7,10 +6,12 @@
 //  Created by Kerem Demir on 19.09.2023.
 //
 
+// MARK : Youtube API Key = AIzaSyC4_EguAvNx1y7t_fNUBxPbj4NwrmSnqQw
+
 import UIKit
 import YouTubeiOSPlayerHelper
 
-class ViewController: UIViewController {
+class PlayerViewController: UIViewController {
     
     private let playerView: YTPlayerView = {
         let playerView = YTPlayerView()

@@ -19,7 +19,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         
         // Create the main ViewController
-        let viewController = ViewController() // ViewController burada kendi ViewController sınıfınıza göre güncellenmelidir
+        let viewController = HomeViewController() // ViewController burada kendi ViewController sınıfınıza göre güncellenmelidir
         
         // Create a UINavigationController containing the main ViewController (optional)
         let navigationController = UINavigationController(rootViewController: viewController)
