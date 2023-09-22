@@ -1,4 +1,7 @@
-// TO DO :
+// TO DO : UIView'e text eklemeyi bul.
+// TO DO : Ok'a basinca malzemeler UIView'e eklensin.
+// TO DO : Min 3 malzeme al iceri.
+
 //  HomeViewController.swift
 //  IKFramePlayer
 //
@@ -17,6 +20,10 @@ class HomeViewController: UIViewController {
         searchTextField.textColor = .label
         searchTextField.layer.borderWidth = 1
         searchTextField.layer.borderColor = UIColor.systemRed.cgColor
+        
+        let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: searchTextField.frame.height))
+        searchTextField.leftView = leftPaddingView
+        searchTextField.leftViewMode = .always
         return searchTextField
     }()
     
@@ -39,6 +46,8 @@ class HomeViewController: UIViewController {
         wordsView.backgroundColor = .systemGray
         return wordsView
     }()
+    
+    var searchList = ["cheese","banana","sugar"]
     
     // MARK : Life Cycle
     override func viewDidLoad() {
@@ -79,7 +88,7 @@ class HomeViewController: UIViewController {
     // MARK : Functions
     
     // MARK : Actions
-    @objc func searchButtonTapped(){
+    @objc func searchButtonTapped() {
         let vc = PlayerViewController()
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
