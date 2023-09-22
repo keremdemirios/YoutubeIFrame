@@ -64,14 +64,10 @@
 		410B35A12AB9FEF000F9E7B5 /* IKFramePlayer */ = {
 			isa = PBXGroup;
 			children = (
+				419227A52ABDDB9200B59A66 /* Controllers */,
+				419227A62ABDDC6000B59A66 /* Resources */,
 				410B35BB2ABB15D500F9E7B5 /* Extensions */,
-				410B35A22AB9FEF000F9E7B5 /* AppDelegate.swift */,
-				410B35A42AB9FEF000F9E7B5 /* SceneDelegate.swift */,
-				410B35AB2AB9FEF200F9E7B5 /* Assets.xcassets */,
-				410B35AD2AB9FEF200F9E7B5 /* LaunchScreen.storyboard */,
 				410B35B02AB9FEF200F9E7B5 /* Info.plist */,
-				410B35B92ABA058000F9E7B5 /* PlayerViewController.swift */,
-				4192279F2ABDD5D500B59A66 /* HomeViewController.swift */,
 			);
 			path = IKFramePlayer;
 			sourceTree = "<group>";
@@ -84,6 +80,26 @@
 				419227A32ABDD86D00B59A66 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		419227A52ABDDB9200B59A66 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				4192279F2ABDD5D500B59A66 /* HomeViewController.swift */,
+				410B35B92ABA058000F9E7B5 /* PlayerViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		419227A62ABDDC6000B59A66 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				410B35A22AB9FEF000F9E7B5 /* AppDelegate.swift */,
+				410B35A42AB9FEF000F9E7B5 /* SceneDelegate.swift */,
+				410B35AB2AB9FEF200F9E7B5 /* Assets.xcassets */,
+				410B35AD2AB9FEF200F9E7B5 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
