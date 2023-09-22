@@ -16,6 +16,7 @@
 		410B35BD2ABB15E200F9E7B5 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 410B35BC2ABB15E200F9E7B5 /* String+Extensions.swift */; };
 		419227A02ABDD5D500B59A66 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4192279F2ABDD5D500B59A66 /* HomeViewController.swift */; };
 		419227A22ABDD65C00B59A66 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419227A12ABDD65C00B59A66 /* UIView+Extension.swift */; };
+		419227A42ABDD86D00B59A66 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419227A32ABDD86D00B59A66 /* UIViewController+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		410B35BC2ABB15E200F9E7B5 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		4192279F2ABDD5D500B59A66 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		419227A12ABDD65C00B59A66 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		419227A32ABDD86D00B59A66 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				410B35BC2ABB15E200F9E7B5 /* String+Extensions.swift */,
 				419227A12ABDD65C00B59A66 /* UIView+Extension.swift */,
+				419227A32ABDD86D00B59A66 /* UIViewController+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -162,6 +165,7 @@
 				419227A02ABDD5D500B59A66 /* HomeViewController.swift in Sources */,
 				410B35BD2ABB15E200F9E7B5 /* String+Extensions.swift in Sources */,
 				410B35BA2ABA058000F9E7B5 /* PlayerViewController.swift in Sources */,
+				419227A42ABDD86D00B59A66 /* UIViewController+Extensions.swift in Sources */,
 				410B35A32AB9FEF000F9E7B5 /* AppDelegate.swift in Sources */,
 				410B35A52AB9FEF000F9E7B5 /* SceneDelegate.swift in Sources */,
 				419227A22ABDD65C00B59A66 /* UIView+Extension.swift in Sources */,
