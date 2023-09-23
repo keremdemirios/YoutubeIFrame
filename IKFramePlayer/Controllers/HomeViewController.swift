@@ -1,7 +1,7 @@
 // TO DO : UIView'e text eklemeyi bul.
 // TO DO : Ok'a basinca malzemeler UIView'e eklensin.
 // TO DO : Min 3 malzeme al iceri.
-
+// TO DO : Explore
 //  HomeViewController.swift
 //  IKFramePlayer
 //
