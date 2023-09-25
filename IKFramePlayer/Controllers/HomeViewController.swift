@@ -37,14 +37,7 @@ class HomeViewController: UIViewController {
         return searchButton
     }()
     
-    private let wordsLabel:UILabel = {
-        let wordsLabel = UILabel()
-        wordsLabel.translatesAutoresizingMaskIntoConstraints = false
-        wordsLabel.text = "#domates"
-        wordsLabel.textColor = .systemGray6
-        wordsLabel.sizeToFit()
-        return wordsLabel
-    }()
+
 
     let wordsView = WordsView()
     
@@ -85,15 +78,6 @@ class HomeViewController: UIViewController {
             searchButton.topAnchor.constraint(equalTo: wordsView.bottomAnchor, constant: 100),
             searchButton.heightAnchor.constraint(equalToConstant: 45),
             searchButton.widthAnchor.constraint(equalToConstant: 100)
-        ])
-        wordsView.addSubViews(wordsLabel)
-        NSLayoutConstraint.activate([
-            wordsLabel.topAnchor.constraint(equalTo: wordsView.topAnchor, constant: 5),
-            wordsLabel.leadingAnchor.constraint(equalTo: wordsView.leadingAnchor, constant: 5),
-//            wordsLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            wordsLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            wordsLabel.heightAnchor.constraint(equalToConstant: 15),
-//            wordsLabel.widthAnchor.constraint(equalToConstant: 200)
         ])
     }
     // MARK : Functions

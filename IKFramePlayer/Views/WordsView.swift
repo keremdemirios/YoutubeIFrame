@@ -9,6 +9,15 @@ import UIKit
 
 class WordsView: UIView {
     
+    private let wordsLabel:UILabel = {
+        let wordsLabel = UILabel()
+        wordsLabel.translatesAutoresizingMaskIntoConstraints = false
+        wordsLabel.text = "#domates"
+        wordsLabel.textColor = .systemGray6
+        wordsLabel.sizeToFit()
+        return wordsLabel
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
@@ -19,6 +28,7 @@ class WordsView: UIView {
     }
     
     private func configure(){
+        configureUI()
         translatesAutoresizingMaskIntoConstraints = false
         
         layer.cornerRadius = 10
@@ -27,15 +37,15 @@ class WordsView: UIView {
         
         backgroundColor = .systemGray
     }
+    
+    private func configureUI(){
+        addSubViews(wordsLabel)
+        NSLayoutConstraint.activate([
+            wordsLabel.topAnchor.constraint(equalTo: topAnchor, constant: 5),
+            wordsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+        ])
+    }
 }
 
 
-//private let wordsView: UIView = {
-//    let wordsView = UIView()
-//    wordsView.translatesAutoresizingMaskIntoConstraints = false
-//    wordsView.layer.cornerRadius = 10
-//    wordsView.layer.borderWidth = 1
-//    wordsView.layer.borderColor = UIColor.systemGray2.cgColor
-//    wordsView.backgroundColor = .systemGray
-//    return wordsView
-//}()
+
