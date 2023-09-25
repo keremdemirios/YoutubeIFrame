@@ -55,12 +55,13 @@ class HomeViewController: UIViewController {
         view.backgroundColor = .systemBackground
         configure()
     }
+    
     // MARK : Configure
     private func configure(){
+        searchTextField.delegate = self
+        searchButton.isEnabled = false
         hideKeyboardWhenTappedAround() // Hide keyboard when tapped around + extension method
         setupUI()
-        
-        searchTextField.delegate = self
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "circle.lefthalf.filled")?.withTintColor(.label, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(changeMode))
     }
@@ -92,6 +93,7 @@ class HomeViewController: UIViewController {
         let vc = PlayerViewController()
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
+        print("working")
     }
     
     @objc func changeMode(){
@@ -120,8 +122,8 @@ extension HomeViewController: UITextFieldDelegate {
         return true
     }
     
-    // Textfield'a ne yazilip ne yazilmayacagini belirtiliyor. (Rakam yasagi var.)
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        // textfield rakam yasagi
         if textField == searchTextField {
             let currentText = textField.text ?? ""
             let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
@@ -134,5 +136,15 @@ extension HomeViewController: UITextFieldDelegate {
             }
         }
         return true
+    }
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if searchTextField.text?.isEmpty == true {
+             searchButton.isEnabled = false
+            print("buton aktif degil")
+         } else {
+             searchButton.isEnabled = true
+             print("buton aktif")
+         }
     }
 }
