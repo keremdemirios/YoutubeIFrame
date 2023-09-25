@@ -18,9 +18,18 @@ class WordsView: UIView {
         return wordsLabel
     }()
     
+    private let stackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.axis = .vertical
+        stackView.spacing = 8
+        return stackView
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configure()
+//        setupStackView()
     }
     
     required init?(coder: NSCoder) {
@@ -45,6 +54,7 @@ class WordsView: UIView {
             wordsLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
         ])
     }
+    
 }
 
 
