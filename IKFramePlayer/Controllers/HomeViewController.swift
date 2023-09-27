@@ -44,33 +44,26 @@ class HomeViewController: UIViewController {
         wordsView.layer.cornerRadius = 10
         wordsView.layer.borderWidth = 1
         wordsView.layer.borderColor = UIColor.systemGray2.cgColor
-        wordsView.backgroundColor = .systemGray
         return wordsView
-    }()
-    
-    private let wordsLabel:UILabel = {
-        let wordsLabel = UILabel()
-        wordsLabel.translatesAutoresizingMaskIntoConstraints = false
-        wordsLabel.text = "#eagle"
-        wordsLabel.textColor = .systemGray6
-        wordsLabel.sizeToFit()
-        return wordsLabel
     }()
     
     private let wordsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
+//        layout.itemSize = CGSize(width: <#T##Double#>, height: <#T##Double#>)
+        layout.minimumLineSpacing = 1
+        layout.minimumInteritemSpacing = 1
         
         // UICollectionView'in frame'ini ve layout'unu belirleyin
         let wordsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         wordsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        wordsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        wordsCollectionView.register(WordsCustomCollectionViewCell.self, forCellWithReuseIdentifier: WordsCustomCollectionViewCell.identifier)
         wordsCollectionView.backgroundColor = .systemGray6
         return wordsCollectionView
     }()
 
     
-    var searchList = ["cheese","banana","sugar"]
+    var searchList = ["cheese","banana","sugar","cheese","banana","sugar"]
     
     // MARK : Life Cycle
     override func viewDidLoad() {
@@ -103,7 +96,7 @@ class HomeViewController: UIViewController {
             // View constraints
             wordsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             wordsView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 30),
-            wordsView.widthAnchor.constraint(equalToConstant: 225),
+            wordsView.widthAnchor.constraint(equalToConstant: 300),
             wordsView.heightAnchor.constraint(equalToConstant: 150),
             // button constraints
             searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -113,10 +106,11 @@ class HomeViewController: UIViewController {
         ])
         wordsView.addSubViews(wordsCollectionView)
         NSLayoutConstraint.activate([
-            wordsCollectionView.topAnchor.constraint(equalTo: wordsView.topAnchor),
-            wordsCollectionView.bottomAnchor.constraint(equalTo: wordsView.bottomAnchor),
-            wordsCollectionView.leadingAnchor.constraint(equalTo: wordsView.leadingAnchor),
-            wordsCollectionView.trailingAnchor.constraint(equalTo: wordsView.trailingAnchor)
+            wordsCollectionView.topAnchor.constraint(equalTo: wordsView.topAnchor, constant: 5),
+            wordsCollectionView.bottomAnchor.constraint(equalTo: wordsView.bottomAnchor, constant: -5),
+            wordsCollectionView.leadingAnchor.constraint(equalTo: wordsView.leadingAnchor, constant: 10),
+            wordsCollectionView.trailingAnchor.constraint(equalTo: wordsView.trailingAnchor, constant: -10)
+            
 //            wordsLabel.topAnchor.constraint(equalTo: wordsView.topAnchor, constant: 5),
 //            wordsLabel.leadingAnchor.constraint(equalTo: wordsView.leadingAnchor, constant: 5)
         ])
@@ -186,12 +180,12 @@ extension HomeViewController: UITextFieldDelegate {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return 6
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.contentView.backgroundColor = .systemBlue
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordsCustomCollectionViewCell.identifier, for: indexPath) as! WordsCustomCollectionViewCell
+        cell.configureLabel(label: "\(searchList[indexPath.row])")
         return cell
     }
 }
