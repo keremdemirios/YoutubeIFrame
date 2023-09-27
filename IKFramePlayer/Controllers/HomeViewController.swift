@@ -38,8 +38,36 @@ class HomeViewController: UIViewController {
     }()
     
 
+    private let wordsView: UIView = {
+        let wordsView = UIView()
+        wordsView.translatesAutoresizingMaskIntoConstraints = false
+        wordsView.layer.cornerRadius = 10
+        wordsView.layer.borderWidth = 1
+        wordsView.layer.borderColor = UIColor.systemGray2.cgColor
+        wordsView.backgroundColor = .systemGray
+        return wordsView
+    }()
+    
+    private let wordsLabel:UILabel = {
+        let wordsLabel = UILabel()
+        wordsLabel.translatesAutoresizingMaskIntoConstraints = false
+        wordsLabel.text = "#eagle"
+        wordsLabel.textColor = .systemGray6
+        wordsLabel.sizeToFit()
+        return wordsLabel
+    }()
+    
+    private let wordsCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        
+        // UICollectionView'in frame'ini ve layout'unu belirleyin
+        let wordsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        wordsCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        wordsCollectionView.backgroundColor = .red
+        return wordsCollectionView
+    }()
 
-    let wordsView = WordsView()
     
     var searchList = ["cheese","banana","sugar"]
     
@@ -54,6 +82,9 @@ class HomeViewController: UIViewController {
     private func configure(){
         searchTextField.delegate = self
         searchButton.isEnabled = false
+        
+        wordsCollectionView.delegate = self
+        wordsCollectionView.delegate = self
         hideKeyboardWhenTappedAround() // Hide keyboard when tapped around + extension method
         setupUI()
         
@@ -140,5 +171,15 @@ extension HomeViewController: UITextFieldDelegate {
              searchButton.isEnabled = true
              print("buton aktif")
          }
+    }
+}
+
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
     }
 }
