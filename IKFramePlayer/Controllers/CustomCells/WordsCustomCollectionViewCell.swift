@@ -10,7 +10,7 @@ import UIKit
 class WordsCustomCollectionViewCell: UICollectionViewCell {
     static let identifier = "WordsCollectionViewCell"
     
-    private let wordsLabel:UILabel = {
+    private let wordsLabel: UILabel = {
         let wordsLabel = UILabel()
         wordsLabel.translatesAutoresizingMaskIntoConstraints = false
         wordsLabel.text = "#eagle"
@@ -18,6 +18,14 @@ class WordsCustomCollectionViewCell: UICollectionViewCell {
         wordsLabel.backgroundColor = .red
         wordsLabel.sizeToFit()
         return wordsLabel
+    }()
+    
+    lazy var deleteButton: UIButton = {
+        let deleteButton = UIButton()
+        deleteButton.translatesAutoresizingMaskIntoConstraints = false
+        deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
+        deleteButton.addTarget(self, action: #selector(deleteWord), for: .touchUpInside)
+        return deleteButton
     }()
     
     override init(frame: CGRect) {
@@ -52,4 +60,17 @@ class WordsCustomCollectionViewCell: UICollectionViewCell {
         super.prepareForReuse()
         wordsLabel.text = nil
     }
+    
+    @objc func deleteWord() {
+        guard let collectionView = superview as? UICollectionView,
+            let indexPath = collectionView.indexPath(for: self) else {
+            return
+        }
+        
+        // IndexPath kullanarak wordsList'ten ilgili öğeyi kaldırın
+        wordsList.remove(at: indexPath.row)
+        // CollectionView'deki ilgili hücreyi kaldırın
+        collectionView.deleteItems(at: [indexPath])
+    }
+
 }

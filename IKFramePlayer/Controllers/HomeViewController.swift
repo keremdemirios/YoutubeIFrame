@@ -30,7 +30,7 @@ class HomeViewController: UIViewController {
     lazy var addButton:UIButton = {
         let addButton = UIButton()
         addButton.translatesAutoresizingMaskIntoConstraints = false
-        addButton.addTarget(self, action: #selector(addToWorListTapped), for: .touchUpInside)
+        addButton.addTarget(self, action: #selector(addToWordListTapped), for: .touchUpInside)
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)
         addButton.tintColor = .systemBlue
         addButton.layer.borderWidth = 1
@@ -75,7 +75,7 @@ class HomeViewController: UIViewController {
     }()
 
     
-    var wordsList = ["empty","emptyemptyempty","empty","empty","empty","empty","empty"]
+    var wordsList = [String]()
     
     // MARK : Life Cycle
     override func viewDidLoad() {
@@ -153,8 +153,19 @@ class HomeViewController: UIViewController {
         }
     }
     
-    @objc func addToWorListTapped(){
-        print("Working")
+    @objc func addToWordListTapped() {
+        guard let wordToAdd = searchTextField.text, !wordToAdd.isEmpty else {
+            // TextField boşsa işlemi yapma
+            showAlert(title: "Error!", message: "Please enter a word.") {
+                //
+            }
+            return
+        }
+        wordsList.append(wordToAdd)
+        print(wordsList.count)
+        print(wordsList)
+        wordsCollectionView.reloadData()
+        searchTextField.text = nil
     }
 }
 
@@ -205,6 +216,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordsCustomCollectionViewCell.identifier, for: indexPath) as! WordsCustomCollectionViewCell
         cell.configureLabel(label: "\(wordsList[indexPath.row])")
+        
         return cell
     }
 }
