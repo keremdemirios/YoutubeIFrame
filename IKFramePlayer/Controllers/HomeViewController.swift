@@ -27,6 +27,18 @@ class HomeViewController: UIViewController {
         return searchTextField
     }()
     
+    lazy var addButton:UIButton = {
+        let addButton = UIButton()
+        addButton.translatesAutoresizingMaskIntoConstraints = false
+        addButton.addTarget(self, action: #selector(addToWorListTapped), for: .touchUpInside)
+        addButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        addButton.tintColor = .systemBlue
+        addButton.layer.borderWidth = 1
+        addButton.layer.borderColor = UIColor.systemBlue.cgColor
+        addButton.layer.cornerRadius = 12
+        return addButton
+    }()
+    
     lazy var searchButton:UIButton = {
         let searchButton = UIButton()
         searchButton.translatesAutoresizingMaskIntoConstraints = false
@@ -49,8 +61,8 @@ class HomeViewController: UIViewController {
     
     private let wordsCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .vertical
-//        layout.itemSize = CGSize(width: <#T##Double#>, height: <#T##Double#>)
         layout.minimumLineSpacing = 1
         layout.minimumInteritemSpacing = 1
         
@@ -63,7 +75,7 @@ class HomeViewController: UIViewController {
     }()
 
     
-    var searchList = ["cheese","banana","sugar","cheese","banana","sugar"]
+    var wordsList = ["empty","emptyemptyempty","empty","empty","empty","empty","empty"]
     
     // MARK : Life Cycle
     override func viewDidLoad() {
@@ -84,19 +96,25 @@ class HomeViewController: UIViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "circle.lefthalf.filled")?.withTintColor(.label, renderingMode: .alwaysOriginal), style: .done, target: self, action: #selector(changeMode))
     }
+    
     // MARK : Setup UI
     private func setupUI(){
-        view.addSubViews(searchTextField, searchButton, wordsView)
+        view.addSubViews(searchTextField, addButton, searchButton, wordsView)
         NSLayoutConstraint.activate([
             // text field constraints
             searchTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             searchTextField.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 100),
-            searchTextField.widthAnchor.constraint(equalToConstant: 300),
+            searchTextField.widthAnchor.constraint(equalToConstant: 250),
             searchTextField.heightAnchor.constraint(equalToConstant: 60),
+            // Add button constraints
+            addButton.centerYAnchor.constraint(equalTo: searchTextField.centerYAnchor),
+            addButton.leadingAnchor.constraint(equalTo: searchTextField.trailingAnchor, constant: 10),
+            addButton.widthAnchor.constraint(equalToConstant: 40),
+            addButton.heightAnchor.constraint(equalToConstant: 40),
             // View constraints
             wordsView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             wordsView.topAnchor.constraint(equalTo: searchTextField.bottomAnchor, constant: 30),
-            wordsView.widthAnchor.constraint(equalToConstant: 300),
+            wordsView.widthAnchor.constraint(equalToConstant: 250),
             wordsView.heightAnchor.constraint(equalToConstant: 150),
             // button constraints
             searchButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -110,9 +128,6 @@ class HomeViewController: UIViewController {
             wordsCollectionView.bottomAnchor.constraint(equalTo: wordsView.bottomAnchor, constant: -5),
             wordsCollectionView.leadingAnchor.constraint(equalTo: wordsView.leadingAnchor, constant: 10),
             wordsCollectionView.trailingAnchor.constraint(equalTo: wordsView.trailingAnchor, constant: -10)
-            
-//            wordsLabel.topAnchor.constraint(equalTo: wordsView.topAnchor, constant: 5),
-//            wordsLabel.leadingAnchor.constraint(equalTo: wordsView.leadingAnchor, constant: 5)
         ])
     }
     // MARK : Functions
@@ -136,6 +151,10 @@ class HomeViewController: UIViewController {
         } else {
             window?.overrideUserInterfaceStyle = .light
         }
+    }
+    
+    @objc func addToWorListTapped(){
+        print("Working")
     }
 }
 
@@ -180,12 +199,12 @@ extension HomeViewController: UITextFieldDelegate {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 6
+        return wordsList.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordsCustomCollectionViewCell.identifier, for: indexPath) as! WordsCustomCollectionViewCell
-        cell.configureLabel(label: "\(searchList[indexPath.row])")
+        cell.configureLabel(label: "\(wordsList[indexPath.row])")
         return cell
     }
 }

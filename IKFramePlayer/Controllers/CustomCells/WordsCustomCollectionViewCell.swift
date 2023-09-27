@@ -40,6 +40,8 @@ class WordsCustomCollectionViewCell: UICollectionViewCell {
             wordsLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             wordsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
+        wordsLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
+        wordsLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
     }
     
     public func configureLabel(label: String){
