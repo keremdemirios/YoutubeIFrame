@@ -19,7 +19,7 @@ class HomeViewController: UIViewController {
         searchTextField.layer.cornerRadius = 12
         searchTextField.textColor = .label
         searchTextField.layer.borderWidth = 1
-        searchTextField.layer.borderColor = UIColor.systemRed.cgColor
+        searchTextField.layer.borderColor = UIColor.systemGray.cgColor
         
         let leftPaddingView = UIView(frame: CGRect(x: 0, y: 0, width: 16, height: searchTextField.frame.height))
         searchTextField.leftView = leftPaddingView
@@ -64,7 +64,8 @@ class HomeViewController: UIViewController {
         // UICollectionView'in frame'ini ve layout'unu belirleyin
         let wordsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         wordsCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        wordsCollectionView.backgroundColor = .red
+        wordsCollectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        wordsCollectionView.backgroundColor = .systemGray6
         return wordsCollectionView
     }()
 
@@ -84,7 +85,7 @@ class HomeViewController: UIViewController {
         searchButton.isEnabled = false
         
         wordsCollectionView.delegate = self
-        wordsCollectionView.delegate = self
+        wordsCollectionView.dataSource = self
         hideKeyboardWhenTappedAround() // Hide keyboard when tapped around + extension method
         setupUI()
         
@@ -109,6 +110,15 @@ class HomeViewController: UIViewController {
             searchButton.topAnchor.constraint(equalTo: wordsView.bottomAnchor, constant: 100),
             searchButton.heightAnchor.constraint(equalToConstant: 45),
             searchButton.widthAnchor.constraint(equalToConstant: 100)
+        ])
+        wordsView.addSubViews(wordsCollectionView)
+        NSLayoutConstraint.activate([
+            wordsCollectionView.topAnchor.constraint(equalTo: wordsView.topAnchor),
+            wordsCollectionView.bottomAnchor.constraint(equalTo: wordsView.bottomAnchor),
+            wordsCollectionView.leadingAnchor.constraint(equalTo: wordsView.leadingAnchor),
+            wordsCollectionView.trailingAnchor.constraint(equalTo: wordsView.trailingAnchor)
+//            wordsLabel.topAnchor.constraint(equalTo: wordsView.topAnchor, constant: 5),
+//            wordsLabel.leadingAnchor.constraint(equalTo: wordsView.leadingAnchor, constant: 5)
         ])
     }
     // MARK : Functions
@@ -176,10 +186,12 @@ extension HomeViewController: UITextFieldDelegate {
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
+        return 30
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        cell.contentView.backgroundColor = .systemBlue
+        return cell
     }
 }
