@@ -1,7 +1,7 @@
-// TO DO : UIView'e text eklemeyi bul.
+
 // TO DO : Ok'a basinca malzemeler UIView'e eklensin.
 // TO DO : Min 3 malzeme al iceri.
-// TO DO : Buton textfield bosken uyari versin. Lutfen bir sey giriniz diye.
+// TO DO : hucre silmeyi yap.
 //  HomeViewController.swift
 //  IKFramePlayer
 //
@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
         let searchTextField = UITextField()
         searchTextField.translatesAutoresizingMaskIntoConstraints = false
         searchTextField.clearButtonMode = .whileEditing
+        searchTextField.autocorrectionType = .no
         searchTextField.layer.cornerRadius = 12
         searchTextField.textColor = .label
         searchTextField.layer.borderWidth = 1
@@ -30,6 +31,7 @@ class HomeViewController: UIViewController {
     lazy var addButton:UIButton = {
         let addButton = UIButton()
         addButton.translatesAutoresizingMaskIntoConstraints = false
+//        addButton.alpha = 0.9
         addButton.addTarget(self, action: #selector(addToWordListTapped), for: .touchUpInside)
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)
         addButton.tintColor = .systemBlue
@@ -63,14 +65,13 @@ class HomeViewController: UIViewController {
         let layout = UICollectionViewFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 1
-        layout.minimumInteritemSpacing = 1
+        layout.minimumLineSpacing = 10
+        layout.minimumInteritemSpacing = 5
         
-        // UICollectionView'in frame'ini ve layout'unu belirleyin
+        // Specify the frame and layout of the UICollectionView
         let wordsCollectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         wordsCollectionView.translatesAutoresizingMaskIntoConstraints = false
         wordsCollectionView.register(WordsCustomCollectionViewCell.self, forCellWithReuseIdentifier: WordsCustomCollectionViewCell.identifier)
-        wordsCollectionView.backgroundColor = .systemGray6
         return wordsCollectionView
     }()
 
@@ -138,6 +139,7 @@ class HomeViewController: UIViewController {
         vc.modalPresentationStyle = .fullScreen
         navigationController?.pushViewController(vc, animated: true)
         print("working")
+        searchTextField.text = nil
     }
     
     @objc func changeMode(){
@@ -208,7 +210,7 @@ extension HomeViewController: UITextFieldDelegate {
     }
 }
 
-extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return wordsList.count
     }
@@ -216,7 +218,13 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WordsCustomCollectionViewCell.identifier, for: indexPath) as! WordsCustomCollectionViewCell
         cell.configureLabel(label: "\(wordsList[indexPath.row])")
-        
+        cell.layer.borderWidth = 1
+        cell.layer.borderColor = UIColor.label.cgColor
+        cell.layer.cornerRadius = 8
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width, height: 30)
     }
 }

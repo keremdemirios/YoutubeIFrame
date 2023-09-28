@@ -14,9 +14,10 @@ class WordsCustomCollectionViewCell: UICollectionViewCell {
         let wordsLabel = UILabel()
         wordsLabel.translatesAutoresizingMaskIntoConstraints = false
         wordsLabel.text = "#eagle"
-        wordsLabel.textColor = .systemGray6
-        wordsLabel.backgroundColor = .red
-        wordsLabel.sizeToFit()
+        wordsLabel.textColor = .label
+        wordsLabel.numberOfLines = 1
+        wordsLabel.textAlignment = .center
+        wordsLabel.font = .systemFont(ofSize: 16.0)
         return wordsLabel
     }()
     
@@ -24,7 +25,7 @@ class WordsCustomCollectionViewCell: UICollectionViewCell {
         let deleteButton = UIButton()
         deleteButton.translatesAutoresizingMaskIntoConstraints = false
         deleteButton.setImage(UIImage(systemName: "trash"), for: .normal)
-        deleteButton.addTarget(self, action: #selector(deleteWord), for: .touchUpInside)
+//        deleteButton.addTarget(self, action: #selector(deleteWord), for: .touchUpInside)
         return deleteButton
     }()
     
@@ -39,14 +40,16 @@ class WordsCustomCollectionViewCell: UICollectionViewCell {
     
     private func configure(){
         configureUI()
-        contentView.backgroundColor = .black
+//        contentView.backgroundColor = .black
     }
     
     private func configureUI() {
         contentView.addSubViews(wordsLabel)
         NSLayoutConstraint.activate([
             wordsLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            wordsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            wordsLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            wordsLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 3),
+            wordsLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -3)
         ])
         wordsLabel.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         wordsLabel.setContentHuggingPriority(.defaultHigh, for: .horizontal)
@@ -59,18 +62,6 @@ class WordsCustomCollectionViewCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         wordsLabel.text = nil
-    }
-    
-    @objc func deleteWord() {
-        guard let collectionView = superview as? UICollectionView,
-            let indexPath = collectionView.indexPath(for: self) else {
-            return
-        }
-        
-        // IndexPath kullanarak wordsList'ten ilgili öğeyi kaldırın
-        wordsList.remove(at: indexPath.row)
-        // CollectionView'deki ilgili hücreyi kaldırın
-        collectionView.deleteItems(at: [indexPath])
     }
 
 }
