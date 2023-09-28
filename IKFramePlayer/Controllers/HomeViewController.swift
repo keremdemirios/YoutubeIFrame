@@ -1,6 +1,6 @@
 
 // TO DO : Ok'a basinca malzemeler UIView'e eklensin.
-// TO DO : Min 3 malzeme al iceri.
+// TO DO : Min 3 malzeme olunca buton aktif olsun.
 // TO DO : hucre silmeyi yap.
 //  HomeViewController.swift
 //  IKFramePlayer
@@ -31,7 +31,6 @@ class HomeViewController: UIViewController {
     lazy var addButton:UIButton = {
         let addButton = UIButton()
         addButton.translatesAutoresizingMaskIntoConstraints = false
-//        addButton.alpha = 0.9
         addButton.addTarget(self, action: #selector(addToWordListTapped), for: .touchUpInside)
         addButton.setImage(UIImage(systemName: "plus"), for: .normal)
         addButton.tintColor = .systemBlue
@@ -48,6 +47,7 @@ class HomeViewController: UIViewController {
         searchButton.setTitle("Search", for: .normal)
         searchButton.backgroundColor = .systemGreen
         searchButton.layer.cornerRadius = 10
+        searchButton.alpha = 0.5
         return searchButton
     }()
     
@@ -132,7 +132,13 @@ class HomeViewController: UIViewController {
         ])
     }
     // MARK : Functions
-    
+    private func updateButtonFunctionality(){
+        if wordsList.count <= 2 {
+            searchButton.alpha = 0.5
+        } else {
+            searchButton.alpha = 1.0
+        }
+    }
     // MARK : Actions
     @objc func searchButtonTapped() {
         let vc = PlayerViewController()
@@ -168,6 +174,7 @@ class HomeViewController: UIViewController {
         print(wordsList)
         wordsCollectionView.reloadData()
         searchTextField.text = nil
+        updateButtonFunctionality()
     }
 }
 
