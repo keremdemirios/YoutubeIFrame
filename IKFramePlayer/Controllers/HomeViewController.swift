@@ -1,6 +1,4 @@
-
 // TO DO : Ok'a basinca malzemeler UIView'e eklensin.
-// TO DO : Min 3 malzeme olunca buton aktif olsun.
 // TO DO : hucre silmeyi yap.
 //  HomeViewController.swift
 //  IKFramePlayer
@@ -28,7 +26,7 @@ class HomeViewController: UIViewController {
         return searchTextField
     }()
     
-    lazy var addButton:UIButton = {
+    lazy var addButton: UIButton = {
         let addButton = UIButton()
         addButton.translatesAutoresizingMaskIntoConstraints = false
         addButton.addTarget(self, action: #selector(addToWordListTapped), for: .touchUpInside)
@@ -44,6 +42,7 @@ class HomeViewController: UIViewController {
         let searchButton = UIButton()
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
+        searchButton.isEnabled = false
         searchButton.setTitle("Search", for: .normal)
         searchButton.backgroundColor = .systemGreen
         searchButton.layer.cornerRadius = 10
@@ -51,7 +50,7 @@ class HomeViewController: UIViewController {
         return searchButton
     }()
     
-
+    
     private let wordsView: UIView = {
         let wordsView = UIView()
         wordsView.translatesAutoresizingMaskIntoConstraints = false
@@ -74,7 +73,7 @@ class HomeViewController: UIViewController {
         wordsCollectionView.register(WordsCustomCollectionViewCell.self, forCellWithReuseIdentifier: WordsCustomCollectionViewCell.identifier)
         return wordsCollectionView
     }()
-
+    
     
     var wordsList = [String]()
     
@@ -137,15 +136,22 @@ class HomeViewController: UIViewController {
             searchButton.alpha = 0.5
         } else {
             searchButton.alpha = 1.0
+            searchButton.isEnabled = true
         }
     }
     // MARK : Actions
     @objc func searchButtonTapped() {
-        let vc = PlayerViewController()
-        vc.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(vc, animated: true)
-        print("working")
-        searchTextField.text = nil
+        if wordsList.count <= 2 {
+            showAlert(title: "Error!", message: "Please enter at least 3 words.") {
+                //
+            }
+        } else {
+            let vc = PlayerViewController()
+            vc.modalPresentationStyle = .fullScreen
+            navigationController?.pushViewController(vc, animated: true)
+            print("working")
+            searchTextField.text = nil
+        }
     }
     
     @objc func changeMode(){
@@ -206,15 +212,15 @@ extension HomeViewController: UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidChangeSelection(_ textField: UITextField) {
-        if searchTextField.text?.isEmpty == true {
-             searchButton.isEnabled = false
-            print("buton aktif degil")
-         } else {
-             searchButton.isEnabled = true
-             print("buton aktif")
-         }
-    }
+    //    func textFieldDidChangeSelection(_ textField: UITextField) {
+    //        if searchTextField.text?.isEmpty == true {
+    //             searchButton.isEnabled = false
+    //            print("buton aktif degil")
+    //         } else {
+    //             searchButton.isEnabled = true
+    //             print("buton aktif")
+    //         }
+    //    }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
