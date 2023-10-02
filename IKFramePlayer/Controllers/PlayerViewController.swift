@@ -25,7 +25,7 @@ class PlayerViewController: UIViewController {
     private let moviesTableView: UITableView = {
         let moviesTableView = UITableView()
         moviesTableView.translatesAutoresizingMaskIntoConstraints = false
-        moviesTableView.register(UITableViewCell.self, forCellReuseIdentifier: VideosCustomTableViewCell.identifier)
+        moviesTableView.register(VideosCustomTableViewCell.self, forCellReuseIdentifier: VideosCustomTableViewCell.identifier)
         moviesTableView.backgroundColor = .systemBackground
         return moviesTableView
     }()
@@ -76,7 +76,8 @@ extension PlayerViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosCustomTableViewCell.identifier, for: indexPath) as! VideosCustomTableViewCell
-        cell.layer.borderColor = UIColor.red.cgColor
+        cell.textLabel?.text = "Kerem Demir"
+        cell.textLabel?.textAlignment = .center
         return cell
     }
     

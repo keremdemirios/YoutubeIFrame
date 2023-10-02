@@ -19,6 +19,10 @@ class VideosCustomTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+           super.prepareForReuse()
+       }
+    
     private func configure(){
         translatesAutoresizingMaskIntoConstraints = false
         configureUI()
