@@ -10,6 +10,14 @@ import UIKit
 class VideosCustomTableViewCell: UITableViewCell {
     static let identifier = "VideosCustomTableViewCell"
     
+    private let videoImage: UIImageView = {
+        let videoImage = UIImageView()
+        let image = UIImage(systemName: "heart")
+        videoImage.translatesAutoresizingMaskIntoConstraints = false
+        videoImage.image = image
+        return videoImage
+    }()
+    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         configure()
@@ -30,6 +38,12 @@ class VideosCustomTableViewCell: UITableViewCell {
     
     
     private func configureUI(){
-        
+        addSubViews(videoImage)
+        NSLayoutConstraint.activate([
+            videoImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            videoImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+            videoImage.widthAnchor.constraint(equalToConstant: 80),
+            videoImage.heightAnchor.constraint(equalToConstant: 80)
+        ])
     }
 }

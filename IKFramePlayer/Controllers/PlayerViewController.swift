@@ -76,8 +76,8 @@ extension PlayerViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosCustomTableViewCell.identifier, for: indexPath) as! VideosCustomTableViewCell
-        cell.textLabel?.text = "Kerem Demir"
-        cell.textLabel?.textAlignment = .center
+//        cell.textLabel?.text = "Kerem Demir"
+//        cell.textLabel?.textAlignment = .center
         return cell
     }
     
