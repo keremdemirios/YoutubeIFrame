@@ -11,7 +11,7 @@
 import UIKit
 import YouTubeiOSPlayerHelper
 
-class PlayerViewController: UIViewController {
+class VideosViewController: UIViewController {
     
     private let playerView: YTPlayerView = {
         let playerView = YTPlayerView()
@@ -69,20 +69,23 @@ class PlayerViewController: UIViewController {
     }
 }
 
-extension PlayerViewController: UITableViewDataSource, UITableViewDelegate {
+extension VideosViewController: UITableViewDataSource, UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosCustomTableViewCell.identifier, for: indexPath) as! VideosCustomTableViewCell
 //        cell.textLabel?.text = "Kerem Demir"
 //        cell.textLabel?.textAlignment = .center
+        let image = UIImage(systemName: "heart")
+        cell.configureImageView(withImage: image)
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 150.0
+        return 200.0
     }
     
 }

@@ -10,13 +10,12 @@ import UIKit
 class VideosCustomTableViewCell: UITableViewCell {
     static let identifier = "VideosCustomTableViewCell"
     
-    private let videoImage: UIImageView = {
+    public var videoImage: UIImageView = {
         let videoImage = UIImageView()
-        let image = UIImage(systemName: "heart")
         videoImage.translatesAutoresizingMaskIntoConstraints = false
-        videoImage.image = image
         return videoImage
     }()
+
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,10 +25,6 @@ class VideosCustomTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func prepareForReuse() {
-           super.prepareForReuse()
-       }
     
     private func configure(){
         translatesAutoresizingMaskIntoConstraints = false
@@ -45,5 +40,9 @@ class VideosCustomTableViewCell: UITableViewCell {
             videoImage.widthAnchor.constraint(equalToConstant: 80),
             videoImage.heightAnchor.constraint(equalToConstant: 80)
         ])
+    }
+    
+    func configureImageView(withImage image: UIImage?){
+        videoImage.image = image
     }
 }
