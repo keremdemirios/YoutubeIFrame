@@ -28,7 +28,7 @@ class VideosCustomTableViewCell: UITableViewCell {
     
     private func configure(){
         translatesAutoresizingMaskIntoConstraints = false
-        configureUI()
+//        configureUI()
     }
     
     
