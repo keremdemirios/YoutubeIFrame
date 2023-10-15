@@ -20,6 +20,7 @@
 		419227A22ABDD65C00B59A66 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419227A12ABDD65C00B59A66 /* UIView+Extension.swift */; };
 		419227A42ABDD86D00B59A66 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 419227A32ABDD86D00B59A66 /* UIViewController+Extensions.swift */; };
 		41B2D7012ACB12DC0081E1E3 /* VideosCustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41B2D7002ACB12DC0081E1E3 /* VideosCustomTableViewCell.swift */; };
+		41E125AB2ADC46120098CB42 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 41E125AA2ADC46120098CB42 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +38,7 @@
 		419227A12ABDD65C00B59A66 /* UIView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		419227A32ABDD86D00B59A66 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		41B2D7002ACB12DC0081E1E3 /* VideosCustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideosCustomTableViewCell.swift; sourceTree = "<group>"; };
+		41E125AA2ADC46120098CB42 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 		410B35A12AB9FEF000F9E7B5 /* IKFramePlayer */ = {
 			isa = PBXGroup;
 			children = (
+				41E125A92ADC46060098CB42 /* Models */,
 				4188E1542AC1D74A00B467B9 /* Views */,
 				419227A52ABDDB9200B59A66 /* Controllers */,
 				419227A62ABDDC6000B59A66 /* Resources */,
@@ -125,6 +128,14 @@
 				410B35AD2AB9FEF200F9E7B5 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		41E125A92ADC46060098CB42 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				41E125AA2ADC46120098CB42 /* DataModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 			files = (
 				419227A02ABDD5D500B59A66 /* HomeViewController.swift in Sources */,
 				41B2D7012ACB12DC0081E1E3 /* VideosCustomTableViewCell.swift in Sources */,
+				41E125AB2ADC46120098CB42 /* DataModel.swift in Sources */,
 				410B35BD2ABB15E200F9E7B5 /* String+Extensions.swift in Sources */,
 				410B35BA2ABA058000F9E7B5 /* VideosViewController.swift in Sources */,
 				419227A42ABDD86D00B59A66 /* UIViewController+Extensions.swift in Sources */,

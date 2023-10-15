@@ -21,15 +21,7 @@ class VideosViewController: UIViewController {
         return moviesTableView
     }()
     
-    var videoData = [ // video image :: video name
-        ("pencil","Kerem"),
-        ("trash","Kerem 1"),
-        ("star","Kerem 2"),
-        ("heart","Kerem 3"),
-        ("heart.fill","Kerem 42"),
-        ("star.fill","Kerem 5"),
-        ("pencil","Kerem 6")
-    ]
+    var videoData = [Result]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +46,28 @@ class VideosViewController: UIViewController {
             moviesTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             moviesTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor)
         ])
-
+        fetchData()
+    }
+    
+    // API KEY = 9d4e2bb4b5c9913f7dfecec00f852fc2
+    func fetchData(){
+        let url = URL(string: "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=9d4e2bb4b5c9913f7dfecec00f852fc2")!
+        URLSession.shared.dataTask(with: url) { [self] data, response, error in
+            guard let data = data, error == nil else {
+                print(error?.localizedDescription ?? "Error at shared data task.")
+                return
+            }
+            do{
+                let jsonData = try JSONDecoder().decode(MovieDataModel.self, from: data)
+                videoData = jsonData.results
+                
+                DispatchQueue.main.async {
+                    self.moviesTableView.reloadData()
+                }
+            } catch {
+                print("Error decoding JSON: \(error)")
+            }
+        }.resume()
     }
 }
 
@@ -67,7 +80,11 @@ extension VideosViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosCustomTableViewCell.identifier, for: indexPath) as! VideosCustomTableViewCell
         let data = videoData[indexPath.row]
-        cell.configureCell(withImage: data.0, withName: data.1)
+//        cell.configureCell(withImage: data.0, withName: data.1)
+        DispatchQueue.main.async {
+            cell.configureCell(withImage: data.posterPath, withName: data.title)
+        }
+        print(data)
         return cell
     }
     

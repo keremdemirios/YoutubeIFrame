@@ -60,7 +60,7 @@ class VideosCustomTableViewCell: UITableViewCell {
     
     
     func configureCell(withImage image: String, withName name: String){
-        videoImage.image = UIImage(systemName: image)
+        videoImage.image = UIImage(named: image)
         movieName.text = name
     }
 }
