@@ -10,10 +10,20 @@ import UIKit
 class VideosCustomTableViewCell: UITableViewCell {
     static let identifier = "VideosCustomTableViewCell"
     
-    public var videoImage: UIImageView = {
-        let videoImage = UIImageView()
+    lazy var videoImage: UIImageView = {
+        var videoImage = UIImageView()
         videoImage.translatesAutoresizingMaskIntoConstraints = false
+        videoImage.contentMode = .scaleAspectFit
+        videoImage.image = nil
         return videoImage
+    }()
+    
+    public var movieName:UILabel = {
+        let movieName = UILabel()
+        movieName.translatesAutoresizingMaskIntoConstraints = false
+        movieName.text = nil
+        movieName.sizeToFit()
+        return movieName
     }()
 
     
@@ -27,22 +37,31 @@ class VideosCustomTableViewCell: UITableViewCell {
     }
     
     private func configure(){
-        translatesAutoresizingMaskIntoConstraints = false
-//        configureUI()
+//        translatesAutoresizingMaskIntoConstraints = false
+        configureUI()
     }
     
     
-    private func configureUI(){
-        addSubViews(videoImage)
+    func configureUI(){
+        addSubViews(videoImage, movieName)
         NSLayoutConstraint.activate([
-            videoImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            // constraint video image
+//            videoImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            videoImage.centerYAnchor.constraint(equalTo: centerYAnchor),
             videoImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
             videoImage.widthAnchor.constraint(equalToConstant: 80),
-            videoImage.heightAnchor.constraint(equalToConstant: 80)
+            videoImage.heightAnchor.constraint(equalToConstant: 80),
+            
+            // constraint movie Name
+            movieName.centerYAnchor.constraint(equalTo: centerYAnchor),
+            movieName.leadingAnchor.constraint(equalTo: videoImage.trailingAnchor, constant: 50)
         ])
     }
     
-    func configureImageView(withImage image: UIImage?){
+    
+    
+    func configureImageView(withImage image: UIImage?, withName name: String){
         videoImage.image = image
+        movieName.text = name
     }
 }

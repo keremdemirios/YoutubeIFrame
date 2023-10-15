@@ -21,6 +21,8 @@ class VideosViewController: UIViewController {
         return moviesTableView
     }()
     
+    var data = ["Kerem","Goktug","Elif","Salih","tiLA","FATMA"]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
@@ -28,9 +30,10 @@ class VideosViewController: UIViewController {
         configure()
     }
     
-    private func configure(){
+    private func configure() {
         configureUI()
-    }    
+    }
+    
     private func configureUI(){
         // table view delegates
         moviesTableView.delegate = self
@@ -50,15 +53,12 @@ class VideosViewController: UIViewController {
 extension VideosViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 20
+        return data.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosCustomTableViewCell.identifier, for: indexPath) as! VideosCustomTableViewCell
-        cell.textLabel?.text = "Kerem Demir"
-        cell.textLabel?.textAlignment = .center
-//        let image = UIImage(systemName: "heart")
-//        cell.configureImageView(withImage: image)
+        cell.configureImageView(withImage: UIImage(systemName: "heart"), withName: data[indexPath.row])
         return cell
     }
     
@@ -70,6 +70,5 @@ extension VideosViewController: UITableViewDataSource, UITableViewDelegate {
         let vc = VideoPlayerViewController()
         vc.modalPresentationStyle = .automatic
         navigationController?.present(vc, animated: true)
-        
     }
 }

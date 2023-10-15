@@ -1,4 +1,4 @@
-//
+//  TO DO : 3 kelimeyi gecince buton aktif. Silinince hala aktif olmaya devam ediyor. Onu yap.
 //  SceneDelegate.swift
 //  IKFramePlayer
 //

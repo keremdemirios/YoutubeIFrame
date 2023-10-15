@@ -42,7 +42,7 @@ class HomeViewController: UIViewController {
         let searchButton = UIButton()
         searchButton.translatesAutoresizingMaskIntoConstraints = false
         searchButton.addTarget(self, action: #selector(searchButtonTapped), for: .touchUpInside)
-//        searchButton.isEnabled = false
+        searchButton.isEnabled = false
         searchButton.setTitle("Search", for: .normal)
         searchButton.backgroundColor = .systemGreen
         searchButton.layer.cornerRadius = 10
@@ -87,7 +87,7 @@ class HomeViewController: UIViewController {
     // MARK : Configure
     private func configure(){
         searchTextField.delegate = self
-//        searchButton.isEnabled = false
+        searchButton.isEnabled = false
         
         wordsCollectionView.delegate = self
         wordsCollectionView.dataSource = self
@@ -136,22 +136,23 @@ class HomeViewController: UIViewController {
             searchButton.alpha = 0.5
         } else {
             searchButton.alpha = 1.0
-//            searchButton.isEnabled = true
+            searchButton.isEnabled = true
         }
     }
     // MARK : Actions
     @objc func searchButtonTapped() {
-//        if wordsList.count <= 2 {
-//            showAlert(title: "Error!", message: "Please enter at least 3 words.") {
-                //
-//            }
-//        } else {
+        if wordsList.count <= 2 {
+            showAlert(title: "Error!", message: "Please enter at least 3 words.") {
+                
+            }
+        } else {
             let vc = VideosViewController()
             vc.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(vc, animated: true)
+//            present(vc, animated: true)
             print("working")
             searchTextField.text = nil
-//        }
+        }
     }
     
     @objc func changeMode(){
@@ -212,15 +213,15 @@ extension HomeViewController: UITextFieldDelegate {
         return true
     }
     
-    //    func textFieldDidChangeSelection(_ textField: UITextField) {
-    //        if searchTextField.text?.isEmpty == true {
-//                 searchButton.isEnabled = false
-    //            print("buton aktif degil")
-    //         } else {
-    //             searchButton.isEnabled = true
-    //             print("buton aktif")
-    //         }
-    //    }
+        func textFieldDidChangeSelection(_ textField: UITextField) {
+            if searchTextField.text?.isEmpty == true {
+                 searchButton.isEnabled = false
+                print("buton aktif degil")
+             } else {
+                 searchButton.isEnabled = true
+                 print("buton aktif")
+             }
+        }
 }
 
 extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
@@ -247,5 +248,4 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         collectionView.deleteItems(at: [indexPath])
         print(wordsList.count)
     }
-    
 }
