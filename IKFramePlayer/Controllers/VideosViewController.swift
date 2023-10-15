@@ -21,7 +21,15 @@ class VideosViewController: UIViewController {
         return moviesTableView
     }()
     
-    var data = ["Kerem","Goktug","Elif","Salih","tiLA","FATMA"]
+    var videoData = [ // video image :: video name
+        ("pencil","Kerem"),
+        ("trash","Kerem 1"),
+        ("star","Kerem 2"),
+        ("heart","Kerem 3"),
+        ("heart.fill","Kerem 42"),
+        ("star.fill","Kerem 5"),
+        ("pencil","Kerem 6")
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,12 +61,13 @@ class VideosViewController: UIViewController {
 extension VideosViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return videoData.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosCustomTableViewCell.identifier, for: indexPath) as! VideosCustomTableViewCell
-        cell.configureImageView(withImage: UIImage(systemName: "heart"), withName: data[indexPath.row])
+        let data = videoData[indexPath.row]
+        cell.configureCell(withImage: data.0, withName: data.1)
         return cell
     }
     
@@ -67,6 +76,8 @@ extension VideosViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
         let vc = VideoPlayerViewController()
         vc.modalPresentationStyle = .automatic
         navigationController?.present(vc, animated: true)

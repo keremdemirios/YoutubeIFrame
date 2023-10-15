@@ -46,11 +46,10 @@ class VideosCustomTableViewCell: UITableViewCell {
         addSubViews(videoImage, movieName)
         NSLayoutConstraint.activate([
             // constraint video image
-//            videoImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            videoImage.centerYAnchor.constraint(equalTo: centerYAnchor),
+            videoImage.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+            videoImage.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
             videoImage.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            videoImage.widthAnchor.constraint(equalToConstant: 80),
-            videoImage.heightAnchor.constraint(equalToConstant: 80),
+            videoImage.widthAnchor.constraint(equalToConstant: 120),
             
             // constraint movie Name
             movieName.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -60,8 +59,8 @@ class VideosCustomTableViewCell: UITableViewCell {
     
     
     
-    func configureImageView(withImage image: UIImage?, withName name: String){
-        videoImage.image = image
+    func configureCell(withImage image: String, withName name: String){
+        videoImage.image = UIImage(systemName: image)
         movieName.text = name
     }
 }

@@ -149,7 +149,6 @@ class HomeViewController: UIViewController {
             let vc = VideosViewController()
             vc.modalPresentationStyle = .fullScreen
             navigationController?.pushViewController(vc, animated: true)
-//            present(vc, animated: true)
             print("working")
             searchTextField.text = nil
         }

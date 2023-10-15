@@ -110,8 +110,8 @@
 			children = (
 				4192279F2ABDD5D500B59A66 /* HomeViewController.swift */,
 				410B35B92ABA058000F9E7B5 /* VideosViewController.swift */,
-				417B36642AC4547300EA2EF8 /* CustomCells */,
 				411F43CE2AD1E89500071DB2 /* VideoPlayerViewController.swift */,
+				417B36642AC4547300EA2EF8 /* CustomCells */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
