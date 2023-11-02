@@ -1,5 +1,6 @@
 // TO DO : Anasayfada bir tane textfield yap ve arama ile video getir. Istege gore farkli sekilde yapabilirsin.
 // TO DO : Video linkini nasil getirecegini bul.
+// TO DO : Resim gelmiyor getir.
 //  YoutubeIFrameController.swift
 //  IKFramePlayer
 //
@@ -10,6 +11,7 @@
 
 import UIKit
 import YouTubeiOSPlayerHelper
+import SDWebImage
 
 class VideosViewController: UIViewController {
     
@@ -73,6 +75,10 @@ class VideosViewController: UIViewController {
 
 extension VideosViewController: UITableViewDataSource, UITableViewDelegate {
     
+    func makeImageUrl(_ imageCode: String) -> URL? {
+        URL(string: "\(NetworkConstant.shared.imageServerAdress)\(imageCode)")
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return videoData.count
     }
@@ -80,11 +86,13 @@ extension VideosViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: VideosCustomTableViewCell.identifier, for: indexPath) as! VideosCustomTableViewCell
         let data = videoData[indexPath.row]
-//        cell.configureCell(withImage: data.0, withName: data.1)
+        let imageAdress = "\(NetworkConstant.shared.imageServerAdress)\(data.posterPath)"
+
         DispatchQueue.main.async {
-            cell.configureCell(withImage: data.posterPath, withName: data.title)
+            cell.configureCell(withImage: imageAdress, withName: data.title)
+            print(imageAdress)
         }
-        print(data)
+        
         return cell
     }
     

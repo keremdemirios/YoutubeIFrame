@@ -57,6 +57,10 @@ class VideosCustomTableViewCell: UITableViewCell {
         ])
     }
     
+    func makeImageUrl(_ imageCode: String) -> URL? {
+        URL(string: "\(NetworkConstant.shared.imageServerAdress)\(imageCode)")
+    }
+    
     
     
     func configureCell(withImage image: String, withName name: String){

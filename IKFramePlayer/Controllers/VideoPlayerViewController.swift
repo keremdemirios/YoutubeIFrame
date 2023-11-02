@@ -43,7 +43,6 @@ class VideoPlayerViewController: UIViewController {
     
     private func getYoutubeView(){
         self.playerView.load(withVideoId: "https://www.youtube.com/watch?v=WxR3CMyMl1c".getYoutubeId() ?? "Empty Url")
-
     }
 
     // MARK : Functions
