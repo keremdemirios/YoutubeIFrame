@@ -52,8 +52,6 @@ class VideosViewController: UIViewController {
     // API KEY = 9d4e2bb4b5c9913f7dfecec00f852fc2
     func fetchData(){
         let url = URL(string: "https://api.themoviedb.org/3/discover/movie?sort_by=popularity.desc&api_key=9d4e2bb4b5c9913f7dfecec00f852fc2")!
-        
-        print(url)
         URLSession.shared.dataTask(with: url) { [self] data, response, error in
             guard let data = data, error == nil else {
                 print(error?.localizedDescription ?? "Error at shared data task.")

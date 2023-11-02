@@ -1,4 +1,3 @@
-// TO DO : Ok'a basinca malzemeler UIView'e eklensin.
 // TO DO : hucre silmeyi yap.
 //  HomeViewController.swift
 //  IKFramePlayer
